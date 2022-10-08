@@ -1,0 +1,14 @@
+syntax="proto3";
+
+service Inference {
+    rpc predict (img_path2) returns (datapred); 
+}
+
+message datapred {
+    float percent = 1;
+    string dataresult =2;
+}
+
+message img_path2 {
+    string path = 1;
+}

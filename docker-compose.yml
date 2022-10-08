@@ -1,0 +1,39 @@
+version: '3.5'
+
+services:
+  backend:
+    container_name: backend
+    image: backend:1.0.0
+    build:
+      context: ./
+      dockerfile: backend/Dockerfile
+    volumes:
+      #- /Users/arturo.duquem/Downloads:/home/images
+      - D:/repositorios/grpc_example/images:/home/images 
+    command: [python, backend.py]
+
+  ui:
+    container_name: interface
+    image: interface:1.0.0
+    build:
+      context: ./
+      dockerfile: interface/Dockerfile
+    volumes:
+      #- /tmp/.X11-unix:/tmp/.X11-unix
+      #- C:/Program Files/VcXsrv/system.XWinrc
+      #- /Users/arturo.duquem/Downloads:/home/images
+      - D:/repositorios/grpc_example/images:/home/images
+    environment:
+     # - DISPLAY=192.168.1.5:0
+     - DISPLAY=host.docker.internal:0
+    command: [python, interface.py]
+
+  inference:
+    container_name: inference
+    image: inference:1.0.0
+    build:
+      context: ./
+      dockerfile: inference/Dockerfile
+    volumes:
+      - D:/repositorios/grpc_example/images:/home/images
+    command: [python, inference.py]
