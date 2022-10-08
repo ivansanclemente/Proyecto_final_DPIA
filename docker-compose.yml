@@ -19,7 +19,7 @@ services:
       context: ./
       dockerfile: interface/Dockerfile
     volumes:
-      #- /tmp/.X11-unix:/tmp/.X11-unix
+      - /tmp/.X11-unix:/tmp/.X11-unix
       #- C:/Program Files/VcXsrv/system.XWinrc
       #- /Users/arturo.duquem/Downloads:/home/images
       - D:/repositorios/grpc_example/images:/home/images

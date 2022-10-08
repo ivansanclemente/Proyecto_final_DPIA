@@ -11,6 +11,8 @@ import cv2
 import backend_pb2
 import backend_pb2_grpc
 
+#import inference_pb2
+#import inference_pb2_grpc
 
 class BackendService(backend_pb2_grpc.BackendServicer):
     def _test_func(self, path):

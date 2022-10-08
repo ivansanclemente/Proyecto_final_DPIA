@@ -1,11 +1,14 @@
 # import the necessary packages
+from cProfile import label
 from curses import panel
-from tkinter import Tk, Button, Label, filedialog, Entry
+from tkinter import *
+from tkinter import ttk, font, filedialog, Entry
 from tkinter.messagebox import askokcancel, showinfo, WARNING
 import getpass
 import base64
 
 from turtle import clear
+from urllib import request
 
 import grpc
 from PIL import Image
@@ -27,7 +30,7 @@ def run_model():
     global strPath
 
     path_msg = inference_pb2.img_path2(path=strPath)
-    response = inference_client.predict(path_msg)
+    response = inference_pb2.predict(path_msg)
 
     v_percent = response.percent
     v_result = response.dataresult
@@ -64,7 +67,11 @@ def select_image():
         img_h = response.height
 
         b64decoded = base64.b64decode(img_content)
+        #b64decoded = base64.b64decode(request.b64image)
         image = np.frombuffer(b64decoded, dtype=np.uint8).reshape(img_h, img_w, -1)
+        #image = np.frombuffer(b64decoded, dtype=np.uint8).reshape(request.height, request.width, -1)
+
+        #batch_array_img = self.preprocess(image)
 
         # convert the images to PIL format...
         image = Image.fromarray(image)
@@ -81,6 +88,20 @@ def select_image():
             # update the pannels
             panelA.configure(image=image)
             panelA.image = image
+        
+        button1['state'] = 'enable'
+
+root.title("Detector Neumonia")
+root.geometry("490x560")
+root.resizable(0, 0)
+
+fonti = font.Font(weight = 'bold')
+
+lab1 = ttk.Label(root, text = "Imagen readiologica", font=fonti)
+lab3 = ttk.Label(root, text = "Resultado", font=fonti)
+lab6 = ttk.Label(root, text = "Probabilidad", font=fonti)
+
+result = StringVar() 
 
 #Input boxes
 text2 = Text(root)
@@ -113,7 +134,7 @@ backend_client = backend_pb2_grpc.BackendStub(channel=channel)
 
 #Inference definition
 channel2 = grpc.insecure_channel("backend:50052", options=options)
-infrence_client = inference_pb2_grpc.inferenceStub(channel=channel2)
+infrence_client = inference_pb2_grpc.InferenceStub(channel=channel2)
 
 # create a button, then when pressed, will trigger a file chooser
 # dialog and allow the user to select an input image; then add the

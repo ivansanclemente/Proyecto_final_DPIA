@@ -1,2 +1,2 @@
-# grpc_example
-This repository shows and example of a client server interaction with images using gRPC
+# Proyecto Final desarrollo Proyectos IA
+Este repositorio despliegue un proyecto con 3 microservicios desplegados con docker compose y grpc para el cargue y prediccion de Neumonia

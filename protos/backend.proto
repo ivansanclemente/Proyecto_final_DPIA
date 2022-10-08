@@ -14,13 +14,13 @@ message img_path {
     string path = 1;
 }
 
-message image_prediction {
-    string label = 1;
-    float prediction = 2;
-}
+// message image_prediction {
+//     string label = 1;
+//     float prediction = 2;
+// }
 
-message image_data {
-    string b64image = 1;
-    int32 width = 2;
-    int32 height = 3;
-}
+// message image_data {
+//     string b64image = 1;
+//     int32 width = 2;
+//     int32 height = 3;
+// }

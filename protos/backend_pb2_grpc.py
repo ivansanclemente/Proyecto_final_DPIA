@@ -5,7 +5,7 @@ import grpc
 import backend_pb2 as backend__pb2
 
 
-class BackendService(object):
+class BackendStub(object):
     """Missing associated documentation comment in .proto file."""
 
     def __init__(self, channel):

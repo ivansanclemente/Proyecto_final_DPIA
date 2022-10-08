@@ -5,7 +5,7 @@ import grpc
 import inference_pb2 as inference__pb2
 
 
-class InferenceService(object):
+class InferenceStub(object):
     """Missing associated documentation comment in .proto file."""
 
     def __init__(self, channel):
