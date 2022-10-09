@@ -33,9 +33,9 @@ class InferenceService(inference_pb2_grpc.InferenceServicer):
         #Up model
         modelo = self.modelo()
 
-        prediction = np.argmax(modelo.predict(batch_array_img))
+        prediction = np.argmax(modelo.predict(patch_array_img))
 
-        fit_percent = np.max(modelo.predict(batch_array_img))* 100
+        fit_percent = np.max(modelo.predict(patch_array_img))* 100
         str_dataresult = ''
         if prediction == 0:
             str_dataresult = "bacteriana"

@@ -121,8 +121,8 @@ text2.place(x=220, y=370, width=90, height=30)
 text3.place(x=220, y=415, width=90, height=30)
 
 # initialize the window toolkit along with the two image panels
-root = Tk()
-panelA = None
+#root = Tk()
+#panelA = None
 
 # Backend client definition
 MAX_MESSAGE_LENGTH = 256*1024*1024
@@ -134,12 +134,12 @@ backend_client = backend_pb2_grpc.BackendStub(channel=channel)
 
 #Inference definition
 channel2 = grpc.insecure_channel("backend:50052", options=options)
-infrence_client = inference_pb2_grpc.InferenceStub(channel=channel2)
+inference_client = inference_pb2_grpc.InferenceStub(channel=channel2)
 
 # create a button, then when pressed, will trigger a file chooser
 # dialog and allow the user to select an input image; then add the
 # button the GUI
-btn = Button(root, text="Select an image", command=select_image)
-btn.pack(side="bottom", fill="both", expand="yes", padx="10", pady="10")
+#btn = Button(root, text="Select an image", command=select_image)
+#btn.pack(side="bottom", fill="both", expand="yes", padx="10", pady="10")
 
 root.mainloop()
