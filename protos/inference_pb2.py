@@ -13,7 +13,7 @@ _sym_db = _symbol_database.Default()
 
 
 
-DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x0finference.proto\"/\n\x08\x64\x61tapred\x12\x0f\n\x07percent\x18\x01 \x01(\x02\x12\x12\n\ndataresult\x18\x02 \x01(\t\"\x19\n\timg_path2\x12\x0c\n\x04path\x18\x01 \x01(\t2-\n\tInference\x12 \n\x07predict\x12\n.img_path2\x1a\t.datapredb\x06proto3')
+DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x0finference.proto\"/\n\x08\x64\x61tapred\x12\x0f\n\x07percent\x18\x01 \x01(\x02\x12\x12\n\ndataresult\x18\x02 \x01(\t\"\x19\n\timg_path2\x12\x0c\n\x04path2\x18\x01 \x01(\t2-\n\tInference\x12 \n\x07predict\x12\n.img_path2\x1a\t.datapredb\x06proto3')
 
 _builder.BuildMessageAndEnumDescriptors(DESCRIPTOR, globals())
 _builder.BuildTopDescriptorsAndMessages(DESCRIPTOR, 'inference_pb2', globals())

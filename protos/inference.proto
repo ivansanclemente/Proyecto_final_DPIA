@@ -10,5 +10,5 @@ message datapred {
 }
 
 message img_path2 {
-    string path = 1;
+    string path2 = 1;
 }

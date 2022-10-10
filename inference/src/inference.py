@@ -7,6 +7,7 @@ import grpc
 import tensorflow as tf
 from tensorflow.keras import models
 from concurrent import futures
+import numpy as np
 
 import inference_pb2
 import inference_pb2_grpc
@@ -25,17 +26,17 @@ class InferenceService(inference_pb2_grpc.InferenceServicer):
 
     def predict (self, request, context):
         #load image
-        path = request.path
-        array = self._read_img(path=path)
+        path = request.path2
+        array_path = self._read_img(path=path)
 
-        patch_array_img = self.preprocess(array)
+        batch_array_img = self.preprocess(array_path)
 
         #Up model
         modelo = self.modelo()
 
-        prediction = np.argmax(modelo.predict(patch_array_img))
+        prediction = np.argmax(modelo.predict(batch_array_img))
 
-        fit_percent = np.max(modelo.predict(patch_array_img))* 100
+        fit_percent = np.max(modelo.predict(batch_array_img))* 100
         str_dataresult = ''
         if prediction == 0:
             str_dataresult = "bacteriana"
