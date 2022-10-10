@@ -8,8 +8,8 @@ services:
       context: ./
       dockerfile: backend/Dockerfile
     volumes:
-      #- /Users/arturo.duquem/Downloads:/home/images
-      - D:/repositorios/grpc_example/images:/home/images 
+      #- c:/user/prueba:/home/images
+      - D:/repositorios/grpc_example4/images:/home/images
     command: [python, backend.py]
 
   ui:
@@ -19,10 +19,8 @@ services:
       context: ./
       dockerfile: interface/Dockerfile
     volumes:
-      - /tmp/.X11-unix:/tmp/.X11-unix
-      #- C:/Program Files/VcXsrv/system.XWinrc
-      #- /Users/arturo.duquem/Downloads:/home/images
-      - D:/repositorios/grpc_example/images:/home/images
+      #- c:/user/prueba:/home/images
+      - D:/repositorios/grpc_example4/images:/home/images
     environment:
      # - DISPLAY=192.168.1.5:0
      - DISPLAY=host.docker.internal:0
@@ -35,5 +33,6 @@ services:
       context: ./
       dockerfile: inference/Dockerfile
     volumes:
-      - D:/repositorios/grpc_example/images:/home/images
+      #- c:/user/prueba:/home/images
+      - D:/repositorios/grpc_example4/images
     command: [python, inference.py]

@@ -14,6 +14,6 @@ RUN pip install -r requirements.txt
 COPY inference/src .
 COPY protos/inference.proto .
 
-RUN curl "https://www.dropbox.com/s/yx6n606i7cfcvoz/WilhemNet_86.h5?dl=1" -L -o WilhemNet_86.h5
+ADD https://github.com/afrincon/neumonia_detector/releases/download/model/WilhemNet_86.h5 /home/src
 
 RUN python -m grpc_tools.protoc -I. --python_out=. --grpc_python_out=. ./inference.proto
